@@ -1,0 +1,22 @@
+name: Build logi-tray Windows exe
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch: # 支持手动点按钮触发编译
+
+jobs:
+  build:
+    runs-on: windows‑latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Rust
+        uses: actions‑rs/toolchain@v1
+        with:
+          toolchain: stable‑x86_64‑pc‑windows‑msvc
+      - name: Build Release
+        run: cargo build --release
+      - name: Upload exe artifact
+        uses: actions/upload‑artifact@v4
+        with:
+          name: logi‑tray‑win64
+          path: target/release/logi‑tray.exe
