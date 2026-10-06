@@ -1,0 +1,16 @@
+[package]
+name = "logi-tray"
+version = "0.1.2"
+edition = "2021"
+
+[dependencies]
+tray-icon = "0.14"
+hidapi = "2.5"
+hidpp = "0.12"
+tokio = { version = "1.0", features = ["rt-multi-thread", "macros"] }
+windows = { version = "0.52", features = [
+    "Win32_Foundation",
+    "Win32_System_Threading",
+] }
+windows-registry = "0.2"
+notify-rust = "4.11"
